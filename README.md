@@ -2,11 +2,12 @@
 
 ## Learning Competencies
 
-- map the flow of data through a web application
-- recognize the five HTTP methods (GET, POST, DELETE, PUT, PATCH)
-- see implementation of MVC on the web.
-- use important unix contextual tools (e.g. `wc`, `cat`, `grep`)
-- use the database to verify changes made by the framework
+* map the flow of data through a web application
+* recognize the five HTTP methods (GET, POST, DELETE, PUT, PATCH)
+* see implementation of MVC on the web.
+* use important unix contextual tools (e.g. `wc`, `cat`, `grep`)
+* use the database to verify changes made by the framework
+* use `rake` to generate models, migrations, and to perform migration
 
 ## Summary
 
