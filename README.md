@@ -19,7 +19,7 @@ web application.
 
 ### Release 0: Create Models &amp; Migrations
 
-The source for your application is located in the `source` directory.
+The source for your application is located in the `anagrams_1` directory in the source directory.
 
 We need to store the dictionary of words from which to construct
 anagrams in the database.  We'll do it with a `words` table.
