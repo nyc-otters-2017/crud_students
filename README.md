@@ -90,12 +90,12 @@ then visit [http://localhost:9393/chicken](http://localhost:9393/chicken).  You 
 <img src="/screenshot.png">
 </p>
 
-Look at `app/controllers/index.rb` to see how the URL parameter is passed into
+Look at `app/controllers/anagrams.rb` to see how the URL parameter is passed into
 your web application.  Does this make sense to you?  If not, find another
 student or staff to help you understand &mdash; this is the **core** type of
 interaction between a user's browser and your web application.
 
-Now edit `app/views/index.erb` to make it look like you want.  Feel free to add
+Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel free to add
 your own CSS, remove debugging information, etc.  But make sure you understand
 the flow of data from the browser to the server and back to the browser again.
 
@@ -122,7 +122,7 @@ in an object-oriented style and return an `Array` of `Words`, not `Strings`.
 
 ### Release 5: Display Anagrams
 
-Edit `app/controllers/index.rb` so that then you visit
+Edit `app/controllers/anagrams.rb` so that then you visit
 `http://localhost:9393/racecar`, `http://localhost:9393/apples`, etc. it
 displays a nice list of anagrams for the given word as encoded in the URL.
 
