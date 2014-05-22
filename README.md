@@ -87,7 +87,7 @@ $ shotgun config.ru
 then visit [http://localhost:9393/chicken](http://localhost:9393/chicken).  You should see something like this:
 
 <p style="text-align: center">
-<img src="http://f.cl.ly/items/0D1b3q1E1q3R0y3x461s/Screen%20Shot%202013-02-18%20at%209.15.07%20AM.png">
+<img src="/screenshot.png">
 </p>
 
 Look at `app/controllers/index.rb` to see how the URL parameter is passed into
