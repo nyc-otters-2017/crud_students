@@ -5,7 +5,7 @@
 * map the flow of data through a web application
 * recognize the five HTTP methods (GET, POST, DELETE, PUT, PATCH)
 * see implementation of MVC on the web.
-* use important unix contextual tools (e.g. `wc`, `cat`, `grep`)
+* use important unix contextual tools (e.g. `wc`, `cat`, `man`, `grep`)
 * use the database to verify changes made by the framework
 * use `rake` to generate models, migrations, and to perform migration
 
@@ -56,7 +56,14 @@ command line:
 ```text
 $ cat /usr/share/dict/words # outputs the contents of the file to STDOUT
 $ wc -w /usr/share/dict/words # counts the number of words in the file
+$ cat /usr/share/dict/words | grep violin # find any lines that include the string violin
+$ grep violin < /usr/share/dict/words # same as above, but without using `cat`
 ```
+
+What does the `-w` option for `wc` command do? How does `wc -w` differ from
+`wc -l`? If you're curious what else `wc` can do, try reading the __man__ual
+page for `wc` by running `man wc`. Tip: You can quit the `man` program with
+`q`.
 
 Copy `/usr/share/dict/words` into a (new!) directory in your application
 directory called `db/fixtures`.  Edit `db/seeds.rb` to read the dictionary file
