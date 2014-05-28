@@ -5,7 +5,7 @@
 * map the flow of data through a web application
 * recognize the five HTTP methods (GET, POST, DELETE, PUT, PATCH)
 * see implementation of MVC on the web.
-* use important unix contextual tools (e.g. `wc`, `cat`, `grep`)
+* use important unix contextual tools (e.g. `wc`, `cat`, `man`, `grep`)
 * use the database to verify changes made by the framework
 * use `rake` to generate models, migrations, and to perform migration
 
@@ -19,7 +19,7 @@ web application.
 
 ### Release 0: Create Models &amp; Migrations
 
-The source for your application is located in the `anagrams_1` directory in the source directory.
+Use this repo as the starting point for your application.
 
 We need to store the dictionary of words from which to construct
 anagrams in the database.  We'll do it with a `words` table.
@@ -56,7 +56,14 @@ command line:
 ```text
 $ cat /usr/share/dict/words # outputs the contents of the file to STDOUT
 $ wc -w /usr/share/dict/words # counts the number of words in the file
+$ cat /usr/share/dict/words | grep violin # find any lines that include the string violin
+$ grep violin < /usr/share/dict/words # same as above, but without using `cat`
 ```
+
+What does the `-w` option for `wc` command do? How does `wc -w` differ from
+`wc -l`? If you're curious what else `wc` can do, try reading the __man__ual
+page for `wc` by running `man wc`. Tip: You can quit the `man` program with
+`q`.
 
 Copy `/usr/share/dict/words` into a (new!) directory in your application
 directory called `db/fixtures`.  Edit `db/seeds.rb` to read the dictionary file
@@ -80,15 +87,15 @@ $ shotgun config.ru
 then visit [http://localhost:9393/chicken](http://localhost:9393/chicken).  You should see something like this:
 
 <p style="text-align: center">
-<img src="http://f.cl.ly/items/0D1b3q1E1q3R0y3x461s/Screen%20Shot%202013-02-18%20at%209.15.07%20AM.png">
+<img src="/screenshot.png">
 </p>
 
-Look at `app/controllers/index.rb` to see how the URL parameter is passed into
+Look at `app/controllers/anagrams.rb` to see how the URL parameter is passed into
 your web application.  Does this make sense to you?  If not, find another
 student or staff to help you understand &mdash; this is the **core** type of
 interaction between a user's browser and your web application.
 
-Now edit `app/views/index.erb` to make it look like you want.  Feel free to add
+Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel free to add
 your own CSS, remove debugging information, etc.  But make sure you understand
 the flow of data from the browser to the server and back to the browser again.
 
@@ -115,7 +122,7 @@ in an object-oriented style and return an `Array` of `Words`, not `Strings`.
 
 ### Release 5: Display Anagrams
 
-Edit `app/controllers/index.rb` so that then you visit
+Edit `app/controllers/anagrams.rb` so that then you visit
 `http://localhost:9393/racecar`, `http://localhost:9393/apples`, etc. it
 displays a nice list of anagrams for the given word as encoded in the URL.
 
