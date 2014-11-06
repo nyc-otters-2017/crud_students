@@ -99,7 +99,7 @@ Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel fre
 your own CSS, remove debugging information, etc.  But make sure you understand
 the flow of data from the browser to the server and back to the browser again.
 
-### Release 4: Define a `Word#anagrams` Method
+### Release 3: Define a `Word#anagrams` Method
 
 Define a method on your `Word` model like this:
 
@@ -120,7 +120,7 @@ might think this means "re-use the `anagrams_for` method we defined there."
 That's not what we mean; we mean re-use the core logic.  It should be written
 in an object-oriented style and return an `Array` of `Words`, not `Strings`.
 
-### Release 5: Display Anagrams
+### Release 4: Display Anagrams
 
 Edit `app/controllers/anagrams.rb` so that then you visit
 `http://localhost:9393/racecar`, `http://localhost:9393/apples`, etc. it
