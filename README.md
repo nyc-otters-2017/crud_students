@@ -122,9 +122,9 @@ in an object-oriented style and return an `Array` of `Words`, not `Strings`.
 
 ### Release 4: Display Anagrams
 
-Edit `app/controllers/anagrams.rb` so that then you visit
-`http://localhost:9393/racecar`, `http://localhost:9393/apples`, etc. it
-displays a nice list of anagrams for the given word as encoded in the URL.
+Edit `app/controllers/anagrams.rb` so that when you visit
+`http://localhost:9393/inch`, `http://localhost:9393/snail`, etc. it
+displays a nice list of anagrams for the word encoded in the URL.
 
 It should still render the same form, so your users can ask for a new set of
 anagrams.  Remember: DRY!  Small fragments of view code that are to be re-used
