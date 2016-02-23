@@ -50,7 +50,7 @@ fresh!
 
 ### Release 1: Import a Dictionary
 
-OS X comes with its own big-ass&trade; dictionary.  Try running this from the
+OS X comes with its own **giant** dictionary.  Try running this from the
 command line:
 
 ```text
