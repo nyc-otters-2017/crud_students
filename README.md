@@ -1,14 +1,5 @@
 # Anagram Server 1 The Basics
 
-## Learning Competencies
-
-* map the flow of data through a web application
-* recognize the five HTTP methods (GET, POST, DELETE, PUT, PATCH)
-* see implementation of MVC on the web.
-* use important unix contextual tools (e.g. `wc`, `cat`, `man`, `grep`)
-* use the database to verify changes made by the framework
-* use `rake` to generate models, migrations, and to perform migration
-
 ## Summary
 
 We're going to write a simple web application that accepts a word via an HTML
@@ -50,31 +41,29 @@ fresh!
 
 ### Release 1: Import a Dictionary
 
-OS X comes with its own **giant** dictionary.  Try running this from the
-command line:
 
-```text
-$ cat /usr/share/dict/words # outputs the contents of the file to STDOUT
-$ wc -w /usr/share/dict/words # counts the number of words in the file
-$ cat /usr/share/dict/words | grep violin # find any lines that include the string violin
-$ grep violin < /usr/share/dict/words # same as above, but without using `cat`
-```
 
-What does the `-w` option for `wc` command do? How does `wc -w` differ from
-`wc -l`? If you're curious what else `wc` can do, try reading the __man__ual
-page for `wc` by running `man wc`. Tip: You can quit the `man` program with
-`q`.
+We want to populate our database with a word list. This means we need two
+things:
+
+1. a source word list (preferably with one word per line)
+1. a Ruby program that reads the source word list and for each line in the list
+  creates a new instance of our `Word` class in the `words` table in the database
+
+Fortunately Apple has provided a word list on every Apple machine in the file:
+`/usr/share/dict/words`.  The file contains an English word on each line.
 
 Copy `/usr/share/dict/words` into a (new!) directory in your application
-directory called `db/fixtures`.  Edit `db/seeds.rb` to read the dictionary file
-in and create one entry in the `words` table per word in the file.
+directory called `db/fixtures`. We're copying the file into our application
+directory because we want to make sure every developer that gets this repo can
+populate their database with the _same_ information, not whatever dictionary
+happens to be on _that_ machine.
 
-We're copying the file into our application directory because in the world
-where we deploy the application to a server or someone else installs the
-application on their computer we want each instance to have the same
-dictionary, not whatever dictionary happens to be on the machine.  By
-convention many Rails developers store invariant data that are used to populate
-the database in `db/fixtures`.
+We need to write some Ruby code to read in the copy of the `words` file. The
+act of doing an initial population of a database is called "seeding" it.
+Accordingly your application directory has a file called `db/seeds.rb` which
+should be edited to use Ruby code to read in the `words` file and populate the
+database.
 
 ### Release 2: Build The Form
 
