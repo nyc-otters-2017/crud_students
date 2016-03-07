@@ -1,10 +1,18 @@
 # Anagram Server: The Basics
 
-## Summary
+## Learning Competencies
 
-We're going to write a simple web application that accepts a word via an HTML
-form and returns a list of anagrams.  This will be our first database-backed
-web application.
+* map the flow of data through a web application
+* recognize the five HTTP methods (GET, POST, DELETE, PUT, PATCH)
+* see implementation of MVC on the web.
+* use important unix contextual tools (e.g. `wc`, `cat`, `man`, `grep`)
+* use the database to verify changes made by the framework
+* use `rake` to generate models, migrations, and to perform migration
+
+
+## Summary
+We're going to write a web application backed by a database.  Users will provide a word, our application will access the database to retrieve anagrams for that word, and the anagrams will be show to the user.
+
 
 ## Releases
 
