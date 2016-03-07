@@ -1,4 +1,4 @@
-# Anagram Server 1 The Basics
+# Anagram Server: The Basics
 
 ## Summary
 
