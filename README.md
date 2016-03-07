@@ -15,6 +15,9 @@ We're going to write a web application backed by a database.  Users will provide
 
 
 ## Releases
+### Pre-release: Intall Gems
+Ensure that the gems required for the application have been installed.  From the command line, run `bundle install`.
+
 
 ### Release 0: Create Models &amp; Migrations
 
