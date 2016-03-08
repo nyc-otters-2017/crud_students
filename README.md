@@ -22,36 +22,20 @@ Ensure that the gems required for the application have been installed.  From the
 ### Release 0: Create a Model and Migration for Words
 If we're going to search a database for a given word's anagrams, we'll need to store words in a database.  We need to create a database with a table in which we can store words.  We'll also want a model to represent words in Ruby.
 
-What data does our database table need to store?  We'll need to store each of the words listed in 
+1. Use the provided Rake tasks to create a `Word` model and a `create_words` migration (see `Rakefile`).
+  ```text
+  $ bundle exec rake generate:model NAME=Word
+  $ bundle exec rake generate:migration NAME=create_words
+  ```
 
+2. Write the migration to [create][create_table] the `words` table. What data does the table need to store?  We'll need to store each of the words listed in the file `db/fixtures/abridged_word_list.txt`.
 
+3. Use the provided Rake tasks to create and migrate the database.
+  ```text
+  $ bundle exec rake db:create
+  $ bundle exec rake db:migrate
+  ```
 
-We need to store the dictionary of words from which to construct
-anagrams in the database.  We'll do it with a `words` table.
-
-That means we'll need a `Word` model and a `create_words` migration.  You can
-generate them by running the following from the command line inside the
-"application root" (`source`) directory:
-
-```text
-$ rake generate:model NAME=Word
-$ rake generate:migration NAME=create_words
-```
-
-These are custom rake tasks.  Look in the `Rakefile` to see how they work, if you're curious.
-
-Fill out your `...create_words.rb` migration located in `db/migrate`.  You may
-want to consult the ActiveRecord [create_table][] documentation.  Be sure to
-execute `rake db:migrate` to put your migration into the database.
-
-Once you are **sure** that your database has been created and your `words`
-table, proceed.  Remember you can use Postgres to explore the database and make
-sure your words were correctly imported.  If you did something wrong you can
-use Postgres to wipe out the contents of the table.  While frameworks such as
-Sinatra and Rails do a great job at taking this burden away from developers,
-**you will be expected** to know how to insert a row, remove a row, clear out a
-table in job interviews as well as in a development career.  Keep these skills
-fresh!
 
 ### Release 1: Import a Dictionary
 
