@@ -19,9 +19,12 @@ We're going to write a web application backed by a database.  Users will provide
 Ensure that the gems required for the application have been installed.  From the command line, run `bundle install`.
 
 
-### Release 0: Create Models &amp; Migrations
+### Release 0: Create a Model and Migration for Words
+If we're going to search a database for a given word's anagrams, we'll need to store words in a database.  We need to create a database with a table in which we can store words.  We'll also want a model to represent words in Ruby.
 
-Use this repo as the starting point for your application.
+What data does our database table need to store?  We'll need to store each of the words listed in 
+
+
 
 We need to store the dictionary of words from which to construct
 anagrams in the database.  We'll do it with a `words` table.
