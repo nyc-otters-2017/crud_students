@@ -40,7 +40,13 @@ If we're going to search a database for a given word's anagrams, we'll need to s
 ### Release 1: Seed the Database
 We have a `words` table in our database.  Now we'll insert some initial data into the database; this is called *seeding* the database.  The data with which we'll seed our database is stored in the file `db/fixtures/abridged_word_list.txt`.  We need to save each word in that file as a word in our database.
 
-Write the code that will seed our database in the file `db/seeds.rb`.  The code for reading the file with our word list has been provided.  We need to specify how to save `Word` objects in the database.
+Write the code that will seed our database in the file `db/seeds.rb`.  The code for reading the file with our word list has been provided.  We need to specify how to save each line from the file as a `Word` object in the database.
+
+To execute the code in the file `db/seeds.rb`, run the provided Rake task:
+
+```text
+$ bundle exec rake db:seed
+```
 
 
 ### Release 2: Build The Form
