@@ -37,31 +37,11 @@ If we're going to search a database for a given word's anagrams, we'll need to s
   ```
 
 
-### Release 1: Import a Dictionary
+### Release 1: Seed the Database
+We have a `words` table in our database.  Now we'll insert some initial data into the database; this is called *seeding* the database.  The data with which we'll seed our database is stored in the file `db/fixtures/abridged_word_list.txt`.  We need to save each word in that file as a word in our database.
 
+Write the code that will seed our database in the file `db/seeds.rb`.  The code for reading the file with our word list has been provided.  We need to specify how to save `Word` objects in the database.
 
-
-We want to populate our database with a word list. This means we need two
-things:
-
-1. a source word list (preferably with one word per line)
-1. a Ruby program that reads the source word list and for each line in the list
-  creates a new instance of our `Word` class in the `words` table in the database
-
-Fortunately Apple has provided a word list on every Apple machine in the file:
-`/usr/share/dict/words`.  The file contains an English word on each line.
-
-Copy `/usr/share/dict/words` into a (new!) directory in your application
-directory called `db/fixtures`. We're copying the file into our application
-directory because we want to make sure every developer that gets this repo can
-populate their database with the _same_ information, not whatever dictionary
-happens to be on _that_ machine.
-
-We need to write some Ruby code to read in the copy of the `words` file. The
-act of doing an initial population of a database is called "seeding" it.
-Accordingly your application directory has a file called `db/seeds.rb` which
-should be edited to use Ruby code to read in the `words` file and populate the
-database.
 
 ### Release 2: Build The Form
 
