@@ -48,6 +48,18 @@ To execute the code in the file `db/seeds.rb`, run the provided Rake task:
 $ bundle exec rake db:seed
 ```
 
+### Release 2: Word Model Finds Anagrams
+Our application needs to find anagrams for a given word.  Our `Word` model will be responsible for this behavior.  An instance of the `Word` class will find anagrams of itself:
+
+```ruby
+class Word < ActiveRecord::Base
+  def anagrams
+    # Returns a collection of Word objects that are anagrams
+    # of the instance on which the method is called.
+  end
+end
+```
+
 
 ### Release 2: Build The Form
 
@@ -71,27 +83,6 @@ interaction between a user's browser and your web application.
 Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel free to add
 your own CSS, remove debugging information, etc.  But make sure you understand
 the flow of data from the browser to the server and back to the browser again.
-
-### Release 3: Define a `Word#anagrams` Method
-
-Define a method on your `Word` model like this:
-
-```ruby
-class Word < ActiveRecord::Base
-  ...
-  # Returns an Array of Word objects which represent anagrams of this word
-  # This can and should make calls to the database
-  # Try to do it in as few calls as possible, without loading every word into memory.  If you can't, that's ok.
-  def anagrams
-  end
-  ...
-end
-```
-
-You should re-use some of the logic from Anagrams 2: Generating Anagrams.  You
-might think this means "re-use the `anagrams_for` method we defined there."
-That's not what we mean; we mean re-use the core logic.  It should be written
-in an object-oriented style and return an `Array` of `Words`, not `Strings`.
 
 ### Release 4: Display Anagrams
 
