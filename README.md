@@ -61,6 +61,14 @@ end
 ```
 
 
+### Release 3: Show a Word's Anagrams
+We're going to start developing our web application by allowing users to view the anagrams for a word. When users visit a URL like `http://localhost:9393/words/leaps`, the given word's anagrams should be listed (see [mockup animation]).  The provided route handler and view are partially working.  We need to complete them.  Make use of the `Word#anagrams` method that we wrote in *Release 2*.
+
+*Note:* Remember that our database has a limited number of words, so we won't be able to find anagrams for all English words.
+
+
+<!-- old releases -->
+
 ### Release 2: Build The Form
 
 Before we dive into constructing anagrams, let's get the form working.  Start
@@ -84,18 +92,6 @@ Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel fre
 your own CSS, remove debugging information, etc.  But make sure you understand
 the flow of data from the browser to the server and back to the browser again.
 
-### Release 4: Display Anagrams
-
-Edit `app/controllers/anagrams.rb` so that when you visit
-`http://localhost:9393/inch`, `http://localhost:9393/snail`, etc. it
-displays a nice list of anagrams for the word encoded in the URL.
-
-It should still render the same form, so your users can ask for a new set of
-anagrams.  Remember: DRY!  Small fragments of view code that are to be re-used
-between views are called **partials**.
-
-See [How do I render partials?][sinatra_partials] in
-Sinatra's FAQ.
 
 ## Resources
 
@@ -103,4 +99,5 @@ Sinatra's FAQ.
 * [Sinatra FAQ][sinatra_partials]
 
 [create_table]: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table
+[mockup animation]: readme-assets/word-page-animation.gif
 [sinatra_partials]: http://www.sinatrarb.com/faq.html#partials
