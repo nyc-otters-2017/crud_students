@@ -63,9 +63,13 @@ end
 
 
 ### Release 3: Show a Word's Anagrams
-We're going to start developing our web application by allowing users to view the anagrams for a word. When users visit a URL like `http://localhost:9393/words/leaps`, the given word's anagrams should be listed (see [mockup animation]).  The provided route handler and view are partially working.  We need to complete them.  Make use of the `Word#anagrams` method that we wrote in *Release 2*.
+We're going to start developing our web application by allowing users to view the anagrams for a word. When users visit a URL like `http://localhost:9393/words/leaps`, the given word's anagrams should be listed (see [mockup animation][word page animation]).  The provided route handler and view are partially working.  We need to complete them.  Make use of the `Word#anagrams` method that we wrote in *Release 2*.
 
 *Note:* Remember that our database has a limited number of words, so we won't be able to find anagrams for all English words.
+
+
+### Release 4: Request Anagrams Using a Form
+To view a word's anagrams, users currently must manually enter a URL.  Add a form to the homepage that allows users to provide the word whose anagrams they'd like to see. (see [mockup animation][form animation])
 
 
 <!-- old releases -->
@@ -100,5 +104,6 @@ the flow of data from the browser to the server and back to the browser again.
 * [Sinatra FAQ][sinatra_partials]
 
 [create_table]: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table
-[mockup animation]: readme-assets/word-page-animation.gif
+[form animation]: readme-assets/form-animation.gif
+[word page animation]: readme-assets/word-page-animation.gif
 [sinatra_partials]: http://www.sinatrarb.com/faq.html#partials
