@@ -15,12 +15,13 @@ We're going to write a web application backed by a database.  Users will provide
 
 
 ## Releases
-### Pre-release: Intall Gems
+### Pre-release: Install Gems
 Ensure that the gems required for the application have been installed.  From the command line, run `bundle install`.
 
 
 ### Release 0: Create a Model and Migration for Words
-If we're going to search a database for a given word's anagrams, we'll need to store words in a database.  We need to create a database with a table in which we can store words.  We'll also want a model to represent words in Ruby.
+If we're going to search a database for a given word's anagrams, we'll first need to store some words in the database.  Create a database with a `words` table and a model to represent words in Ruby.
+
 
 1. Use the provided Rake tasks to create a `Word` model and a `create_words` migration (see `Rakefile`).
   ```text
@@ -49,7 +50,7 @@ $ bundle exec rake db:seed
 ```
 
 ### Release 2: Word Model Finds Anagrams
-Our application needs to find anagrams for a given word.  Our `Word` model will be responsible for this behavior.  An instance of the `Word` class will find anagrams of itself:
+Our application needs to find anagrams for a given word.  Our `Word` model will be responsible for this behavior.  An instance of the `Word` class will return anagrams of itself:
 
 ```ruby
 class Word < ActiveRecord::Base
