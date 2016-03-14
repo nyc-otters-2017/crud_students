@@ -72,30 +72,14 @@ We're going to start developing our web application by allowing users to view th
 To view a word's anagrams, users currently must manually enter a URL.  Add a form to the homepage that allows users to provide the word whose anagrams they'd like to see. (see [mockup animation][form animation])
 
 
-<!-- old releases -->
+### Release 5: Add the Form to the Word Page
+The form on the homepage is handy, but it's still cumbersome to view multiple words' anagrams.  To facilitate bouncing from word to word, add the form from the homepage to the word page.  (see [mockup animation][form on page])
 
-### Release 2: Build The Form
+In accomplishing this, we're going to use a partial—we might be asking, "[What is a partial?][partials in sinatra]" (see cheat sheet tab).  Begin by moving the code for the form from the homepage into a partial and then include that partial on the homepage.  Using the partial should not change how the page displays in the browser.
 
-Before we dive into constructing anagrams, let's get the form working.  Start
-the application by running:
+Once we have our partial working, include the partial on the page which lists a word's anagrams.
 
-```text
-$ shotgun config.ru
-```
-then visit [http://localhost:9393/chicken](http://localhost:9393/chicken).  You should see something like this:
-
-<p style="text-align: center">
-<img src="/screenshot.png">
-</p>
-
-Look at `app/controllers/anagrams.rb` to see how the URL parameter is passed into
-your web application.  Does this make sense to you?  If not, find another
-student or staff to help you understand &mdash; this is the **core** type of
-interaction between a user's browser and your web application.
-
-Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel free to add
-your own CSS, remove debugging information, etc.  But make sure you understand
-the flow of data from the browser to the server and back to the browser again.
+*Note:* Be more concerned with the functionality of the form than getting it to display exactly as shown in the mockup.
 
 
 ## Resources
@@ -105,5 +89,7 @@ the flow of data from the browser to the server and back to the browser again.
 
 [create_table]: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table
 [form animation]: readme-assets/form-animation.gif
+[form on page]: readme-assets/form-on-page.gif
 [word page animation]: readme-assets/word-page-animation.gif
+[partials in sinatra]: https://www.learnhowtoprogram.com/lessons/partials-in-sinatra#cheat-sheet
 [sinatra_partials]: http://www.sinatrarb.com/faq.html#partials
