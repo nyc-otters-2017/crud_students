@@ -74,6 +74,8 @@ Once we have our partial working, include the partial on the page which lists a 
 *Note:* Be more concerned with the functionality of the form than getting it to display exactly as shown in the mockup.
 
 
+## Conclusion
+We've built a web application backed by a database.  Can we trace how data flows through our application?  When our server receives a request to show a word's anagrams, what happens?  What are the responsibilities of the model, view, and controller?
 
 
 [create_table]: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table
