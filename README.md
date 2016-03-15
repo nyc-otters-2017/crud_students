@@ -55,7 +55,7 @@ end
 ### Release 3: Show a Word's Anagrams
 We're going to start developing our web application by allowing users to view the anagrams for a word. When users visit a URL like `http://localhost:9393/words/leaps`, the given word's anagrams should be listed (see [mockup animation][word page animation]).  The provided route handler and view are partially working.  We need to complete them.  Make use of the `Word#anagrams` method that we wrote in *Release 2*.
 
-*Note:* Remember that our database has a limited number of words, so we won't be able to find anagrams for all English words.
+*Note:* Remember that our database has a limited number of words, so we won't be able to find anagrams for all English words.  If we want a more exhaustive list of word in our database, we can reseed the database using the file `db/fixtures/word_list.txt`.
 
 
 ### Release 4: Request Anagrams Using a Form
