@@ -1,7 +1,7 @@
 # Anagram Server: The Basics
 
 ## Summary
-We're going to write a web application backed by a database.  Users will provide a word, our application will access the database to retrieve anagrams for that word, and the anagrams will be show to the user.
+We're going to write a web application backed by a database.  Users will provide a word, our application will access the database to retrieve anagrams for that word, and the anagrams will be listed for the user.
 
 
 ## Releases
