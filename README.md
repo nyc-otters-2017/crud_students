@@ -72,10 +72,7 @@ Once we have our partial working, include the partial on the page which lists a 
 *Note:* Be more concerned with the functionality of the form than getting it to display exactly as shown in the mockup.
 
 
-## Resources
 
-* [Active Record: Create Table][create_table]
-* [Sinatra FAQ][sinatra_partials]
 
 [create_table]: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table
 [form animation]: readme-assets/form-animation.gif
