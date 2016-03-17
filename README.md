@@ -3,7 +3,7 @@
 ## Summary
 We're going to write a web application backed by a database.  Users will provide a word, our application will access the database to retrieve anagrams for that word, and the anagrams will be listed for the user.
 
-As we build the application, be mindful of the flow of data between the client and server.  The browser will be making HTTP requests and sending data along with many of the requests.  What data?  The word whose anagrams the user wants listed.  The controller route handlers will ask our model to retrieve data for the word's anagrams from the database.  The route handlers then render a view for the data returned by the model.  Finally, the server returns the rendered HTML to browser.
+As we build the application, be mindful of how data flows between the client and server. The browser will be sending data via HTTP requests to Sinatra, what should that data be? After the server receives data, a controller route handler will need to ask a model to fetch anagrams. The route handler then renders a view for the data returned by the model. Finally, the server returns that rendered HTML to the browser.
 
 
 ## Releases
