@@ -61,7 +61,7 @@ To view a word's anagrams, users currently must manually enter a URL.  Add a for
 
 ![mockup animation][form animation]
 
-*Figure 3*.  Use a form to ask for a word's anagrams.
+*Figure 2*.  Use a form to ask for a word's anagrams.
 
 
 ### Release 5: Add the Form to the Word Page
