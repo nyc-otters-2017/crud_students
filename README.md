@@ -16,18 +16,10 @@ If we're going to search a database for a given word's anagrams, we'll first nee
 
 
 1. Use the provided Rake tasks to create a `Word` model and a `create_words` migration (see `Rakefile`).
-  ```text
-  $ bundle exec rake generate:model NAME=Word
-  $ bundle exec rake generate:migration NAME=create_words
-  ```
 
 2. Write the migration to [create][create_table] the `words` table. What data does the table need to store?  We'll need to store each of the words listed in the file `db/fixtures/abridged_word_list.txt`.
 
 3. Use the provided Rake tasks to create and migrate the database.
-  ```text
-  $ bundle exec rake db:create
-  $ bundle exec rake db:migrate
-  ```
 
 
 ### Release 1: Seed the Database
