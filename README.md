@@ -60,6 +60,7 @@ We're going to start developing our web application by allowing users to view th
 To view a word's anagrams, users currently must manually enter a URL.  Add a form to the homepage that allows users to provide the word whose anagrams they'd like to see. (see Figure 2)
 
 ![mockup animation][form animation]
+
 *Figure 3*.  Use a form to ask for a word's anagrams.
 
 
@@ -73,6 +74,7 @@ Once we have our partial working, include the partial on the page which lists a 
 *Note:* Be more concerned with the functionality of the form than getting it to display exactly as shown in the mockup.
 
 ![mockup animation][form on page]
+
 *Figure 3*.  Form added to the page showing a word's anagrams.
 
 
