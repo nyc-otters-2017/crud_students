@@ -15,7 +15,7 @@ Ensure that the gems required for the application have been installed.  From the
 If we're going to search a database for a given word's anagrams, we'll first need to store some words in the database.  Create a database with a `words` table and a model to represent words in Ruby.
 
 
-1. Use the provided Rake tasks to create a `Word` model and a `create_words` migration (see `Rakefile`).
+1. Use the provided Rake tasks to generate a `Word` model and to generate a `create_words` migration (see `Rakefile`).
 
 2. Write the migration to [create][create_table] the `words` table. What data does the table need to store?  We'll need to store each of the words listed in the file `db/fixtures/abridged_word_list.txt`.
 
