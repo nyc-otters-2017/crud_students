@@ -1,131 +1,90 @@
-# Anagram Server 1 The Basics
+# Anagrams Web Application
 
 ## Summary
+We're going to write a web application backed by a database.  Users will provide a word, our application will access the database to retrieve anagrams for that word, and the anagrams will be listed for the user.
 
-We're going to write a simple web application that accepts a word via an HTML
-form and returns a list of anagrams.  This will be our first database-backed
-web application.
+As we build the application, be mindful of how data flows between the client and server. The browser will be sending data via HTTP requests to Sinatra, what should that data be? After the server receives data, a controller route handler will need to ask a model to fetch anagrams. The route handler then renders a view for the data returned by the model. Finally, the server returns that rendered HTML to the browser.
+
 
 ## Releases
-
-### Release 0: Create Models &amp; Migrations
-
-Use this repo as the starting point for your application.
-
-We need to store the dictionary of words from which to construct
-anagrams in the database.  We'll do it with a `words` table.
-
-That means we'll need a `Word` model and a `create_words` migration.  You can
-generate them by running the following from the command line inside the
-"application root" (`source`) directory:
-
-```text
-$ rake generate:model NAME=Word
-$ rake generate:migration NAME=create_words
-```
-
-These are custom rake tasks.  Look in the `Rakefile` to see how they work, if you're curious.
-
-Fill out your `...create_words.rb` migration located in `db/migrate`.  You may
-want to consult the ActiveRecord [create_table][] documentation.  Be sure to
-execute `rake db:migrate` to put your migration into the database.
-
-Once you are **sure** that your database has been created and your `words`
-table, proceed.  Remember you can use Postgres to explore the database and make
-sure your words were correctly imported.  If you did something wrong you can
-use Postgres to wipe out the contents of the table.  While frameworks such as
-Sinatra and Rails do a great job at taking this burden away from developers,
-**you will be expected** to know how to insert a row, remove a row, clear out a
-table in job interviews as well as in a development career.  Keep these skills
-fresh!
-
-### Release 1: Import a Dictionary
+### Pre-release: Install Gems
+Ensure that the gems required for the application have been installed.  From the command line, run `bundle install`.
 
 
+### Release 0: Create a Model and Migration for Words
+If we're going to search a database for a given word's anagrams, we'll first need to store some words in the database.  Create a database with a `words` table and a model to represent words in Ruby.
 
-We want to populate our database with a word list. This means we need two
-things:
 
-1. a source word list (preferably with one word per line)
-1. a Ruby program that reads the source word list and for each line in the list
-  creates a new instance of our `Word` class in the `words` table in the database
+1. Use the provided Rake tasks to generate a `Word` model and to generate a `create_words` migration (see `Rakefile`).
 
-Fortunately Apple has provided a word list on every Apple machine in the file:
-`/usr/share/dict/words`.  The file contains an English word on each line.
+2. Write the migration to [create][create_table] the `words` table. What data does the table need to store?  We'll need to store each of the words listed in the file `db/fixtures/abridged_word_list.txt`.
 
-Copy `/usr/share/dict/words` into a (new!) directory in your application
-directory called `db/fixtures`. We're copying the file into our application
-directory because we want to make sure every developer that gets this repo can
-populate their database with the _same_ information, not whatever dictionary
-happens to be on _that_ machine.
+3. Use the provided Rake tasks to create and migrate the database.
 
-We need to write some Ruby code to read in the copy of the `words` file. The
-act of doing an initial population of a database is called "seeding" it.
-Accordingly your application directory has a file called `db/seeds.rb` which
-should be edited to use Ruby code to read in the `words` file and populate the
-database.
 
-### Release 2: Build The Form
+### Release 1: Seed the Database
+We have a `words` table in our database.  Now we'll insert some initial data into the database; this is called *seeding* the database.  The data with which we'll seed our database is stored in the file `db/fixtures/abridged_word_list.txt`.  We need to save each word in that file as a word in our database.
 
-Before we dive into constructing anagrams, let's get the form working.  Start
-the application by running:
+Write the code that will seed our database in the file `db/seeds.rb`.  The code for reading the file with our word list has been provided.  We need to specify how to save each line from the file as a `Word` object in the database.
+
+To execute the code in the file `db/seeds.rb`, run the provided Rake task:
 
 ```text
-$ shotgun config.ru
+$ bundle exec rake db:seed
 ```
-then visit [http://localhost:9393/chicken](http://localhost:9393/chicken).  You should see something like this:
 
-<p style="text-align: center">
-<img src="/screenshot.png">
-</p>
-
-Look at `app/controllers/anagrams.rb` to see how the URL parameter is passed into
-your web application.  Does this make sense to you?  If not, find another
-student or staff to help you understand &mdash; this is the **core** type of
-interaction between a user's browser and your web application.
-
-Now edit `app/views/anagrams/index.erb` to make it look like you want.  Feel free to add
-your own CSS, remove debugging information, etc.  But make sure you understand
-the flow of data from the browser to the server and back to the browser again.
-
-### Release 3: Define a `Word#anagrams` Method
-
-Define a method on your `Word` model like this:
+### Release 2: Word Model Finds Anagrams
+Our application needs to find anagrams for a given word.  Our `Word` model will be responsible for this behavior.  An instance of the `Word` class will return anagrams of itself:
 
 ```ruby
 class Word < ActiveRecord::Base
-  ...
-  # Returns an Array of Word objects which represent anagrams of this word
-  # This can and should make calls to the database
-  # Try to do it in as few calls as possible, without loading every word into memory.  If you can't, that's ok.
   def anagrams
+    # Returns a collection of Word objects that are anagrams
+    # of the instance on which the method is called.
   end
-  ...
 end
 ```
 
-You should re-use some of the logic from Anagrams 2: Generating Anagrams.  You
-might think this means "re-use the `anagrams_for` method we defined there."
-That's not what we mean; we mean re-use the core logic.  It should be written
-in an object-oriented style and return an `Array` of `Words`, not `Strings`.
 
-### Release 4: Display Anagrams
+### Release 3: Show a Word's Anagrams
+We're going to start developing our web application by allowing users to view the anagrams for a word. When users visit a URL like `http://localhost:9393/words/leaps`, the given word's anagrams should be listed (see Figure 1).  The provided route handler and view are partially working.  We need to complete them.  Make use of the `Word#anagrams` method that we wrote in *Release 2*.
 
-Edit `app/controllers/anagrams.rb` so that when you visit
-`http://localhost:9393/inch`, `http://localhost:9393/snail`, etc. it
-displays a nice list of anagrams for the word encoded in the URL.
+*Note:* Remember that our database has a limited number of words (e.g., leaps, melon, etc.), so we won't be able to find anagrams for all English words.  If we want a more exhaustive list of words in our database, we can reseed the database using the file `db/fixtures/word_list.txt`.
 
-It should still render the same form, so your users can ask for a new set of
-anagrams.  Remember: DRY!  Small fragments of view code that are to be re-used
-between views are called **partials**.
+![mockup animation][word page animation]
 
-See [How do I render partials?][sinatra_partials] in
-Sinatra's FAQ.
+*Figure 1*.  Displaying the anagrams for a given word.
 
-## Resources
 
-* [Active Record: Create Table][create_table]
-* [Sinatra FAQ][sinatra_partials]
+### Release 4: Request Anagrams Using a Form
+To view a word's anagrams, users currently must manually enter a URL.  Add a form to the homepage that allows users to provide the word whose anagrams they'd like to see. (see Figure 2)
+
+![mockup animation][form animation]
+
+*Figure 2*.  Use a form to ask for a word's anagrams.
+
+
+### Release 5: Add the Form to the Word Page
+The form on the homepage is handy, but it's still cumbersome to view multiple words' anagrams.  To facilitate bouncing from word to word, add the form from the homepage to the word page.  (see Figure 3)
+
+In accomplishing this, we're going to use a partial—we might be asking, "[What is a partial?][partials in sinatra]" (see cheat sheet tab).  Begin by moving the code for the form from the homepage into a partial and then include that partial on the homepage.  Using the partial should not change how the page displays in the browser.
+
+Once we have our partial working, include the partial on the page which lists a word's anagrams.
+
+*Note:* Be more concerned with the functionality of the form than getting it to display exactly as shown in the mockup.
+
+![mockup animation][form on page]
+
+*Figure 3*.  Form added to the page showing a word's anagrams.
+
+
+## Conclusion
+We've built a web application backed by a database.  Can we trace how data flows through our application?  When our server receives a request to show a word's anagrams, what happens?  What are the responsibilities of the model, view, and controller?
+
 
 [create_table]: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-create_table
+[form animation]: readme-assets/form-animation.gif
+[form on page]: readme-assets/form-on-page.gif
+[word page animation]: readme-assets/word-page-animation.gif
+[partials in sinatra]: https://www.learnhowtoprogram.com/lessons/partials-in-sinatra#cheat-sheet
 [sinatra_partials]: http://www.sinatrarb.com/faq.html#partials
