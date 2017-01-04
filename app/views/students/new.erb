@@ -1,0 +1,26 @@
+<div class="">
+
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error |%>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form class="" action="/students" method="post">
+    <div class="">
+      <label for="first_name">First Name</label>
+      <input type="text" name="student[first_name]" value="" placeholder="First Name">
+    </div>
+
+    <div class="">
+      <label for="last_name">Last Name</label>
+      <input type="text" name="student[last_name]" value="" placeholder="Last Name">
+    </div>
+
+    <div class="">
+      <input type="submit" value="Create">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="">
+
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error |%>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form class="" action="/students/<%= @student.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+
+    <div class="">
+      <label for="first_name">First Name</label>
+      <input type="text" name="student[first_name]" value="<%= @student.first_name%>" placeholder="First Name">
+    </div>
+
+    <div class="">
+      <label for="last_name">Last Name</label>
+      <input type="text" name="student[last_name]" value="<%= @student.last_name%>" placeholder="Last Name">
+    </div>
+
+    <div class="">
+      <input type="submit" value="Update">
+    </div>
+  </form>
+</div>

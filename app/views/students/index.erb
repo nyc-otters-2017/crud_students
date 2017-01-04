@@ -1,0 +1,7 @@
+<div class="">
+  <ul>
+    <% @students.each do |student| %>
+      <li><%= student.first_name %> <%= student.last_name %></li> <a href="/students/<%= student.id%>/edit">Edit</a>
+    <% end %>
+  </ul>
+</div>
