@@ -1,13 +1,6 @@
 <div class="">
 
-  <% if @errors %>
-    <ul>
-      <% @errors.each do |error |%>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
+  <%= erb :'/partial/_errors' %>
   <form class="" action="/students/<%= @student.id %>" method="post">
     <input type="hidden" name="_method" value="put">
 

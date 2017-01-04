@@ -35,8 +35,8 @@ put '/students/:id' do
 end
 
 
-get '/students/:id/books'
+get '/students/:id/books' do
 end
 
-delete '/students/:id'
+delete '/students/:id' do
 end

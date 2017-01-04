@@ -1,13 +1,6 @@
 <div class="">
 
-  <% if @errors %>
-    <ul>
-      <% @errors.each do |error |%>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
+    <%= erb :'/partial/_errors' %>
   <form class="" action="/students" method="post">
     <div class="">
       <label for="first_name">First Name</label>
