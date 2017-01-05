@@ -18,14 +18,15 @@
   <title>Anagram Finder</title>
 </head>
 <body>
-  <header class="container wrap-float">
-    <h1 class="left">Anagram Finder</h1>
-    <nav class="right">
+  <% if current_user %>
       <ul>
-        <li><a href="/">home</a></li>
+        <li>Hello, <%= current_user.username %></li>
+        <li><a href="/users/logout">Logout</a></li>
       </ul>
-    </nav>
-  </header>
+  <% else %>
+    <a href="/users/new">Create account</a>
+    <a href="/users/login">Log in</a>
+  <% end%>
   <%= yield %>
 </body>
 </html>

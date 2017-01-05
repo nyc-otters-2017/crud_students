@@ -1,10 +1,12 @@
 get '/students' do
+  require_user
   @students = Student.all
   erb :'/students/index'
 end
 
 
 get '/students/new' do
+  require_user
   erb :'/students/new'
 end
 
