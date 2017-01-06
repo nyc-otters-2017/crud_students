@@ -2,7 +2,8 @@ class Student < ActiveRecord::Base
   # Remember to create a migration!
 
   validates :first_name, :last_name, presence:  true
-  
+  has_many :books
+
   # validate :my_custom_validation
   #
   # def my_custom_validation

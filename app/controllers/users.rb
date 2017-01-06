@@ -6,7 +6,7 @@ post '/users' do
   @user = User.new(params[:user])
   if @user.save
     session[:user_id] = @user.id
-    redirect '/students'
+    redirect '/books'
   else
     erb :'/users/new'
   end
@@ -29,6 +29,6 @@ post '/users/login' do
 end
 
 get '/users/logout' do
-  session.clear
+  session[:user_id] = nil
   redirect '/users/new'
 end
