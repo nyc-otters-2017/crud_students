@@ -1,7 +1,17 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('.all-books').on('click', function(e){
+    e.preventDefault();
+    // console.log('ckick event on link')
+    var url = $(e.target).attr('href')
+    debugger
+    $.ajax({
+      type: 'get',
+      url: url
+    }).success(function(response){
+      // console.log(response);
+      $(e.target).parent().append(response)
+    }).fail(function(error){
+      console.log(error)
+    })
+  })
 });

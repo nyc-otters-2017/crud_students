@@ -1,8 +1,10 @@
 <div class="">
   <ul>
     <% @students.each do |student| %>
-      <li><%= student.first_name %> <%= student.last_name %></li> <a href="/students/<%= student.id%>/edit">Edit</a>
-      <a href="/students/<%= student.id%>/books">Show all books</a>
+      <div class="student">
+        <li><%= student.first_name %> <%= student.last_name %></li> <a href="/students/<%= student.id%>/edit">Edit</a>
+        <a href="/students/<%= student.id%>/books" class='all-books'>Show all books</a>
+      </div>
     <% end %>
   </ul>
 </div>

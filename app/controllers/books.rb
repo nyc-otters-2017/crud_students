@@ -18,13 +18,18 @@ end
 
 
 get '/students/:id/books' do
+  # binding.pry
   student = Student.find(params[:id])
   @books = student.books
-  erb :'/books/index'
+  if request.xhr?
+    erb :'/books/index', layout: false
+  else
+    erb :'/books/index'
+  end
 end
 
-post '/books' do
-  book = current_user.books.new(params[:book])
+post '/students/:student_id/books/' do
+  book = Student.find_by(id: params[:student_id]).books.new(params[:book])
   if book.save
     redirect '/books'
   else
